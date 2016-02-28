@@ -1,0 +1,13 @@
+<% @attractions.each do |attraction|%>
+<%= attraction.name%>
+<%= attraction.tickets%>
+<% if can? :take_ride, @ride%>
+<%= link_to "Go on #{attraction.name}", attraction_path(attraction)%>
+<% else %>
+<%= link_to "Show #{attraction.name}", attraction_path(attraction)%>
+<% end %>
+<% end %>
+
+<% if can? :create, @attraction%>
+  <%= link_to "New Attraction", new_attraction_path%>
+<% end %>
